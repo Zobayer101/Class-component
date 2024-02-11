@@ -1,15 +1,16 @@
 
 
-import Clascom from './clsCom/Clascom';
+import ClockList from './clsCom/ClockList';
 
 function App() {
 
-console.log(`App is render`)
+  const arr=[3,4,2,5,65,3]
 
   return (
     <>
   
-     <Clascom ></Clascom>
+     <ClockList quantity={arr}></ClockList>
+     
     </>
   )
 }

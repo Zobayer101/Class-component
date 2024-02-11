@@ -12,7 +12,7 @@ class Button extends React.Component{
         }
     }
     render(){
-        console.log(`Button is reander `)
+        
         
         // eslint-disable-next-line react/prop-types
         const {change} =this.props;

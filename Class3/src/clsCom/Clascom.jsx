@@ -34,7 +34,7 @@ class Clascom extends React.Component{
         
     }
     render(){
-        console.log(`clock render`)
+        
         return(
             <div>
                  <h1>{this.state.Date.toLocaleTimeString(this.state.local)}</h1>
