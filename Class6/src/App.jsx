@@ -1,6 +1,5 @@
 
-
-import Clascom from './clsCom/Clascom';
+import Emoji from './clsCom/Emoji';
 
 function App() {
 
@@ -8,8 +7,7 @@ function App() {
 
   return (
     <>
-  
-     <Clascom local="bn-BD"></Clascom>
+   <Emoji/>
     </>
   )
 }
