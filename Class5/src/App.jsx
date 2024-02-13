@@ -4,7 +4,7 @@ import MainConverter from "./clsCom/MainConverter"
 
 function App() {
 
-console.log(`App is render`)
+//Lifting state Up
 
   return (
     <>

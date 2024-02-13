@@ -3,8 +3,7 @@
 import Clascom from './clsCom/Clascom';
 
 function App() {
-
-console.log(`App is render`)
+//React event Handaling
 
   return (
     <>

@@ -4,7 +4,7 @@ import Clascom from './clsCom/Clascom';
 
 function App() {
 
-
+//React state and lifecycle
 
   return (
     <>

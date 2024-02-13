@@ -9,26 +9,19 @@ function App() {
     <>
     
     
-    <Counter RenderProp={(counter,Incremant)=> (
+    <Counter>
+      {(counter,Incremant)=> (
         <Click Counter={counter} Incremant={Incremant}/>
-    )}/>
-
-    
-    <Counter RenderProp={(counter,Incremant)=> (
-        <Click Counter={counter} Incremant={Incremant}/>
-    )}/>
+        )}
+    </Counter>
 
 
-    <Counter RenderProp={(counter,Incremant)=>(
+    <Counter>
+      {(counter,Incremant)=>(
       <Hover Counter={counter} Incremant={Incremant}/>
     )}
-    />
-
-
-    <Counter RenderProp={(counter,Incremant)=>(
-      <Hover Counter={counter} Incremant={Incremant}/>
-    )}
-    />
+    </Counter>
+   
 
      
     <Name name={(login)=> login? "wellcome to new app":'first need to loggin'}></Name>

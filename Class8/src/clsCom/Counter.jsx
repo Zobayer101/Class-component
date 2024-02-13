@@ -8,8 +8,8 @@ export default class Counter extends React.Component {
         }))
     }
   render() {
-    const {RenderProp}=this.props;
+    const {children}=this.props;
     const {count}=this.state;
-    return RenderProp(count,this.Incrimant)
+    return children(count,this.Incrimant)
   }
 }
