@@ -1,6 +1,6 @@
 
 import React from 'react'
-import Text from './Text';
+
 class Emoji extends React.Component{
     addEmoji=(text,emoji)=>{
 
@@ -10,14 +10,10 @@ class Emoji extends React.Component{
        )
     }
     render(){
-        let text='hellow I am a javaScript programming language';
-    
-        return (
-            <div>
-                {text}
-                <Text Emo={ this.addEmoji} taX={'I am super power'} EmoJi={'(:'} ></Text>
-            </div>
-        )
+        //let text='hellow I am a javaScript programming language';
+        
+
+        return this.props.children({addEmojiX:this.addEmoji})
     }
 }
 

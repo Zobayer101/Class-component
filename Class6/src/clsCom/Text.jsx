@@ -3,13 +3,13 @@ class Text extends React.Component{
    
     render(){
         
-        const {Emo,taX,EmoJi}=this.props;
+        const {addEmoji}=this.props;
         let text='all are progrimming language'
         return (
             <div>
                 <h3>Hellow world</h3>
                 {
-                   Emo ? Emo(taX,EmoJi):text
+                   addEmoji ? addEmoji("taX",'(:') :text
                 }
             </div>
         )

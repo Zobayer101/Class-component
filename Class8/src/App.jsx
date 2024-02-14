@@ -22,8 +22,8 @@ function App() {
     )}
     </Counter>
    
-
      
+
     <Name name={(login)=> login? "wellcome to new app":'first need to loggin'}></Name>
     </>
   )
