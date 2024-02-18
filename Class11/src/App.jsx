@@ -1,3 +1,4 @@
+import State from "./components/State"
 
 
 
@@ -7,7 +8,7 @@ function App() {
 
   return (
     <>
-    <h1>hello bangla</h1>
+    <State/>
     </>
   )
 }
