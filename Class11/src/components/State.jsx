@@ -19,7 +19,8 @@ const State = () => {
     useEffect(() => {
         document.title = `button click ${count} times`;
         console.log('render your page')
-    },[count])
+    }, [count])
+    console.log('State component render');
     return (
         <div>
             <input onChange={handelchange} type="text" value={todo} placeholder="Enter your language" /><br />

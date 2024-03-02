@@ -10,6 +10,7 @@ function App() {
   const [postImage, setPostImage] = useState({ myFile: "" });
 
   const createPost = async (newImage) => {
+    //AXIOS
     try {
       await axios.post(url, newImage);
     } catch (error) {

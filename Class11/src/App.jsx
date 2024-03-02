@@ -1,14 +1,15 @@
 import State from "./components/State"
 
 
-
+import Count from "./components/Count"
 
 function App() {
   //useState
 
   return (
     <>
-    <State/>
+      <State />
+      <Count/>
     </>
   )
 }
