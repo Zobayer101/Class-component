@@ -1,0 +1,343 @@
+
+
+.OuterCon{
+    width: 100%;
+    height: 100vh;
+    
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    grid-template-rows: repeat(6,1fr);
+}
+.OuterCon .chatList{
+    grid-column: 1/5;
+    grid-row: 1/-1;
+    
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+.OuterCon .chatPage{
+    grid-column: 5/-1;
+    
+    grid-row: 1/-1;
+}
+.ChatBox{
+    height: 100vh;
+    width: 100%;
+}
+.ChatBox .Header{
+    width: 100%;
+    height: 10%;
+    background: rgb(8, 84, 128);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.ChatBox .Header .Hpro{
+    width: 50%;
+    height: 100%;
+    display: flex;
+}
+ .Header .Hpro .Arrow.Show{
+    height: 100%;
+    width: 50px;
+    font-size: 20px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+   visibility: hidden;
+ }
+ .Header .Hpro .Arrow{
+    display: none;
+ }
+.Header .Hpro .img{
+    height: 100%;
+    width: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Hpro .img img{
+    height: 100%;
+    width: 60px;
+    border-radius: 50%;
+}
+ .Header .Hpro .namePaticipator{
+    width: 150px;
+    height: 100%;
+    display: flex;
+    
+    align-items: center;
+    justify-content: start;
+ }
+ .Hpro .namePaticipator p{
+    color: #fff;
+    font-size: 16px ;
+   
+
+ }
+ .ChatBox .Header .Hfre{
+    height: 100%;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: #fff;
+    font-size: 20px;
+ }
+ .ChatBox .MainChat{
+    width: 100%;
+    height: 84%;
+    background: url("../img/BG.jpg") no-repeat  center;
+    background-size: cover;
+    z-index: -1;
+    overflow-y: scroll;
+    color: #fcf;
+   
+ }
+ .MainChat .Pphoto{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+  .MainChat .Pphoto img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+  .MainChat .DateStart{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+    .MainChat .DateStart p{
+        font-size: 13px;
+        color: rgb(179, 177, 177);
+        background: #47364e;
+        padding: 2px 4px 2px 4px ;
+        border-radius: 3px;
+    }
+    .MainChat .ProName{
+        height: 50px;
+        width: 100%;
+        display: flex;
+        align-items: start;
+        justify-content: center;
+
+    }
+    .MainChat .ProName h3{
+        color: rgb(245, 245, 245);
+        font-size: 25px;
+        letter-spacing: 1px;
+    }
+  
+    .MainChat  .coVerSender{
+        display: flex;
+        height: auto;
+        width: 100%;
+        
+    }
+    .MainChat .senderCont{
+        height: auto;
+        max-width: 50%;
+        display: flex;
+        align-items: start;
+        
+    }
+    .senderCont .Simg img {
+        height: 30px;
+        width: 30px;
+        margin: 10px;
+        border-radius: 50%;
+    }
+    .MainChat .senderCont .Text{
+        
+       padding: 10px;
+       background:linear-gradient(45deg,#f0c,rgb(0, 110, 255));
+       margin: 5px;
+       border-radius: 0 10px 10px 10px;
+    }
+    .MainChat .CoverRicvier{
+        width: 100%;
+        display: flex;
+       justify-content: end;
+    }
+    .MainChat .reciverCon{
+        max-width: 50%;
+        display: flex;
+    }
+    .MainChat .reciverCon .Simg img{
+        height: 30px ;
+        width: 30px;
+        margin: 10px;
+        border-radius: 50%;
+    }
+     .MainChat .reciverCon .Text{
+        padding: 10px;
+       background:linear-gradient(45deg,#f0c,rgb(0, 110, 255));
+       margin: 5px;
+       border-radius: 10px 0px 10px 10px ;
+     }
+     .ChatBox .Sender{
+        width: 100%;
+        height: 6%;
+        background: #235674;
+        display: flex;
+        align-items: center;
+     }
+     .ChatBox .Sender .SenD {
+        height: 100%;
+        width: 60px;
+
+     }
+     .ChatBox .Sender .SenD button{
+        height: 100%;
+        width: 100%;
+        background: #793fe6;
+        font-size: 20px;
+        color: #fff;
+        border: none;
+     }
+     .ChatBox .Sender .input,input{
+        height: 100%;
+        width: 100%;
+     }
+     .ChatBox .Sender .input input{
+        outline: none;
+        font-size: 16px;
+        color: #b0b4b6;
+        background: #252121;
+     }
+     
+     /* ------------Header ------------------------ */
+
+     .OuterCon .Paticipator{
+        height: 100vh;
+        width: 100%;
+     }
+   .OuterCon .Paticipator .header{
+    width: 100%;
+    height: 15%;
+    background: rgb(28, 38, 94);
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    box-shadow: 0 4px 5px 0 ;
+}
+.Paticipator .header .Menu{
+     display: none;
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    left: 20px;
+}
+.header .Menu .bar1,.bar2,.bar3{
+    width: 40px;
+    height: 5px ;
+    background: #608333;
+    margin-bottom: 7px;
+    border-radius: 3px;
+    transition: .4s;
+    
+}
+.header .Menu.New .bar1{
+    transform: translate(0px ,15px) rotate(45deg);
+}
+.header .Menu.New .bar2{
+   margin-left: 30px;
+   opacity: 0;
+}
+.header .Menu.New .bar3{
+   transform: translate(0px ,-9px) rotate(-45deg);
+}
+
+.Paticipator .header .logo h3{
+    color: #96b0f8;
+    font-size: 30px;
+}
+.Paticipator .allPeople{
+    height: 80%;
+    width: 100%;
+    background: #b3acac;
+    margin-top: 5%;
+    border-radius: 10px;
+    overflow: auto;
+}
+.Paticipator .allPeople .PeopleCard{
+
+    height: 80px;
+    width: 100%;
+    background: #90c7d4;
+    box-shadow: 0 2px 5px ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.allPeople .PeopleCard .img{
+    width: 100px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.allPeople .PeopleCard .img img{
+    height: 70px;
+    width:70px;
+    border-radius: 50%;
+}
+.PeopleCard .Pname p{
+    font-size: 18px;
+    color: #2f2c5a;
+    font-weight: 500;
+}
+.PeopleCard .Date p{
+    padding: 10px;
+    font-size: 14px;
+    color: #051620;
+}
+
+/* ----------------Media Quary---------------------------- */
+
+@media screen and (max-width:750px) {
+    
+    .OuterCon .chatPage {
+    transition: .5s;
+    grid-column: 1/-1 ;
+    grid-row: 1/-1;
+}
+ .OuterCon .chatPage.None {
+    display: none;
+    grid-column: 1/-1 ;
+    grid-row: 1/-1;
+}
+.OuterCon  .chatList.None{
+    display: none;
+    grid-column: 1/-1 ;
+    grid-row: 1/-1;
+    height: 100vh;
+    width: 100%;
+    transition: .5s;
+}
+.OuterCon  .chatList{
+    transition: .5s;
+    grid-column: 1/-1 ;
+    grid-row: 1/-1;
+    height: 100vh;
+    width: 100%;
+
+}
+.Paticipator .header .Menu{
+    display: block;
+}
+ .Header .Hpro .Arrow.Show{
+   visibility: visible;
+}
+}

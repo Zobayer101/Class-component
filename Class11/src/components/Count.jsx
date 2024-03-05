@@ -13,7 +13,8 @@ const reducer = (state, action) => {
 }
 
 const Count = () => {
-   const [count,dispach]= useReducer(reducer, initalSate);
+    const [count, dispach] = useReducer(reducer, initalSate);
+    console.log('Count page render')
     return (
         <div>
             <h1>new Reduce counter {count} times</h1>

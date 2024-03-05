@@ -18,7 +18,7 @@ const State = () => {
     }
     useEffect(() => {
         document.title = `button click ${count} times`;
-        console.log('render your page')
+       
     }, [count])
     console.log('State component render');
     return (

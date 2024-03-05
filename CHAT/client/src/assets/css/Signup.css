@@ -1,0 +1,225 @@
+
+.outSignCon{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.outSignCon .SignCon{
+    height: 550px;
+    width: 450px;
+    background: #7896b8;
+    border: none;
+    box-shadow: 0 0 10px 3px rgba(0,0,0,0.4);
+    border-radius: 5px;
+}
+.outSignCon .SignCon form{
+    width: 100%;
+    height: 100%;
+}
+.SignCon form .header{
+    width: 100%;
+    height:19% ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 5px solid #505050;
+    background: #2d43bd;
+    border-radius: 5px 5px 0 0;
+}
+.SignCon form .header h2{
+    font-weight: 600;
+    font-size: 25px;
+    letter-spacing: 2px ;
+    color: #39f778;
+    margin-bottom:35px ;
+}
+.outSignCon .SignCon form .ChogeAcater{
+    width: 100%;
+    height: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ .SignCon form .ChogeAcater .coverAvatar{
+    height: 100px;
+    width: 100px ;
+    margin-bottom: 10%;
+    border: 5px solid #7896b8;
+    border-radius: 50%;
+    position: relative;
+   
+ }
+  .SignCon form .ChogeAcater .coverAvatar input{
+    position: absolute;
+    height: 100%;
+    border-radius: 50%;
+    opacity: 0;
+    width: 100%;
+  }
+ .ChogeAcater .coverAvatar img{
+    height: 100%;
+    width: 100%;
+    
+    border-radius: 50%;
+ }
+
+.SignCon form .Outername,.Outeremail,.Outerpassword ,.OuterConfrom {
+    height: 12%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.SignCon form .Outername .name , .Outeremail .email, .Outerpassword .password ,.OuterConfrom .conform{
+    height: 80%;
+    width: 70% ;
+    position: relative;
+}
+form .Outername .name input,.email input, .password input ,.conform input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: 3px solid #685d5d;
+    background: transparent;
+    border-radius: 8px ;
+    color: #fff;
+    font-size: 16px;
+    padding: 3px;
+}
+form .Outername .name span,.email span ,.password span, .conform span{
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    color: #35f545;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    user-select: none;
+    pointer-events: none;
+    transition: .6s ease;
+}
+form .Outername .name input:focus~span,
+form .Outername .name input:valid~span{
+    background: #35f545;
+    padding: 0;
+    color: #7896b8;
+    transform:  translate(10px , -10px );
+    border-radius: 3px;
+    font-size: 13px;
+}
+form .Outeremail .email input:focus~span,
+form .Outeremail .email input:valid~span{
+    background: #35f545;
+    padding: 0;
+    color: #7896b8;
+    transform:  translate(10px , -10px );
+    border-radius: 3px;
+    font-size: 13px;
+}
+form .Outerpassword .password input:focus~span,
+form .Outerpassword .password input:valid~span{
+    background: #35f545;
+    padding: 0;
+    color: #7896b8;
+    transform:  translate(10px , -10px );
+    border-radius: 3px;
+    font-size: 13px;
+}
+form .OuterConfrom .conform input:focus~span,
+form .OuterConfrom .conform input:valid~span{
+    background: #35f545;
+    padding: 0;
+    color: #7896b8;
+    transform:  translate(10px , -10px );
+    border-radius: 3px;
+    font-size: 13px;
+}
+ form .resgester{
+    height: 12%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+ form .resgester  .btn{
+    color: #5a6359 !important;
+    cursor: not-allowed;
+ }
+ 
+ form .resgester button{ 
+    height: 40px;
+    width: 30%;
+    background: #6cf378;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: .4s;
+ }
+ form .resgester  button:hover{
+    box-shadow: 0 0 20px 3px #2ccf39;
+    background: #078507;
+ }
+  form .resgester  .btn:hover{
+    color: #567553 !important;
+  }
+ form .Have{
+    height: 50px ;
+    width: 100%;
+    display: flex;
+ }
+ form .Have p{
+    color:#ffc ;
+    margin-left: 80px;
+ }
+  form .Have a{
+    margin-left: 5px;
+  }
+  .notMatch{
+    transform: translateY(-370px);
+    height: 60px;
+    width: 14em;
+    border: none ;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 99;
+    box-shadow: 0 0 10px 3px rgba(0,0,0,0.7);
+    background: #f0efef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s ;
+    animation: message 2s linear forwards;
+
+  }
+ .notMatchx p{
+    display: none;
+ }
+   .notMatch p{
+    display: block;
+    padding: 4px;
+    font-size: 16px;
+    color: rgb(255, 53, 53);
+   }
+   @keyframes message {
+    0%{
+        transform: translateY(-370px) scale(.6) ;
+    }
+    20%{
+        transform: translateY(-100px) scale(1) ;
+    }
+    /* 50%{
+        transform: translateY(-100px) scale(1) ;
+    }
+    70%{
+        transform: translateY(-100px) scale(1) ;
+    } */
+    90%{
+        transform: translateY(-100px) scale(1) ;
+    }
+    100%{
+         transform: translateY(-370px) scale(.6) ;
+    }
+   }
