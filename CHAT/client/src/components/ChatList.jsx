@@ -4,7 +4,7 @@ import { Context } from "../App";
 
 
 const ChatList = () => {
-    const { toggle, setToggle, alldata } = useContext(Context);
+    const { toggle, setToggle } = useContext(Context);
   return (
     <div>
       <div className="Paticipator">
@@ -20,25 +20,25 @@ const ChatList = () => {
 
           <div className="logo">
             <h3>Always</h3>
+            <input type="search" />
           </div>
         </div>
            <div className="allPeople">
-        {alldata.map((value, index) => {
-            return (
-              <div className="PeopleCard" key={index}>
+        
+          
+              <div className="PeopleCard" >
                 <div className="img">
                   <img src={avater} alt="" />
                 </div>
                 <div className="Pname">
-                  <p>{value.fname}</p>
+                  <p>Jasica</p>
                 </div>
 
                 <div className="Date">
-                  <p>{value.barth}</p>
+                  <p>20/87</p>
                 </div>
               </div>
-            );
-          })}
+           
           </div>
       </div>
     </div>

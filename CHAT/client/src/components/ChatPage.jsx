@@ -4,18 +4,37 @@ import { FaVideo } from "react-icons/fa";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { IoIosSend } from "react-icons/io";
 import { FaArrowLeft } from "react-icons/fa6";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Context } from "../App";
+import { io } from "socket.io-client";
 
-
+ 
 const ChatPage = () => {
-    const { toggle, setToggle } = useContext(Context);
+  const { toggle, setToggle } = useContext(Context);
+  useEffect(() => {
+    let url = "http://localhost:3300";
+    const socket = io(url);
+    socket.on("connect", () => {
+     console.log(socket.id)
+    });
+    socket.on("serverSend", (msg) => {
+      console.log(msg);
+    });
+    socket.emit("ClientSend","I am come from client side")
+    return () => {
+      socket.disconnect()
+    }
+  }, []);
+  
   return (
     <div>
       <div className="ChatBox">
         <div className="Header">
           <div className="Hpro">
-            <div onClick={()=>setToggle(!toggle)} className={toggle ? "Arrow Show" : "Arrow"}>
+            <div
+              onClick={() => setToggle(!toggle)}
+              className={toggle ? "Arrow Show" : "Arrow"}
+            >
               <FaArrowLeft />
             </div>
             <div className="img">
@@ -89,7 +108,7 @@ const ChatPage = () => {
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default ChatPage;
