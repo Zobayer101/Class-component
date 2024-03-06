@@ -1,7 +1,7 @@
 import { useEffect ,useContext} from "react";
 import "../assets/css/Admin.css";
 import Image from "../assets/img/profile.png";
-
+//import useFecth from "../lib/useFecth";
 import Profile from "./Profile";
 import { Link, useNavigate } from "react-router-dom";
 import { TiMessages } from "react-icons/ti";
@@ -16,7 +16,7 @@ const Admin = () => {
   // fetch all data
   let TOKEN = localStorage.getItem("TOKEN");
   let url = "http://localhost:3300/route/user/data/api/remove";
-
+  // useFecth("http://localhost:3300/route/api/read",setAlldata);
   useEffect(() => {
     let url = "http://localhost:3300/route/api/read";
 

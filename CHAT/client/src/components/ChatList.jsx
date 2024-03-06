@@ -1,10 +1,21 @@
 import { useContext } from "react";
 import avater from "../assets/img/profile.png";
 import { Context } from "../App";
-
+import useFecth from "../lib/useFecth";
+import PostData from "../lib/PostData";
 
 const ChatList = () => {
-    const { toggle, setToggle } = useContext(Context);
+  const { toggle, setToggle, list, setList, message, setMessage } =
+    useContext(Context);
+  let url = "http://localhost:3300/route/api/conversation/list/read";
+  let urlx = "http://localhost:3300/route/api/create/message/start";
+
+  useFecth(url, setList);
+
+  const SendData = async (ID) => PostData(urlx, ID, setMessage);
+
+  if (!list) return <h1>Loading...</h1>;
+  console.log(message);
   return (
     <div>
       <div className="Paticipator">
@@ -23,23 +34,28 @@ const ChatList = () => {
             <input type="search" />
           </div>
         </div>
-           <div className="allPeople">
-        
-          
-              <div className="PeopleCard" >
+        <div className="allPeople">
+          {list.data.map((value, index) => {
+            return (
+              <div
+                onClick={() => SendData(value._id)}
+                className="PeopleCard"
+                key={index}
+              >
                 <div className="img">
-                  <img src={avater} alt="" />
+                  <img src={value.photo || avater} alt="" />
                 </div>
                 <div className="Pname">
-                  <p>Jasica</p>
+                  <p>{value.fname}</p>
                 </div>
 
                 <div className="Date">
-                  <p>20/87</p>
+                  <p>{value.barth}</p>
                 </div>
               </div>
-           
-          </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

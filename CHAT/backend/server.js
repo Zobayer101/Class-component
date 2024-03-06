@@ -24,20 +24,20 @@ let io = new socket.Server(server, {
   cors: { origin: "http://localhost:5173" },
 });
 
-let Disconnect = () => {
-    console.log("user  diconnect")
+// let Disconnect = () => {
+//     console.log("user  diconnect")
     
-}
-let msgessageClient = (msg) => {
-    console.log(msg)
-}
+// }
+// let msgessageClient = (msg) => {
+//     console.log(msg)
+// }
 
 let message = (socket) => {
     console.log("connect a new user");
     socket.emit('serverSend', "hello md zobayer I send on server")
-    socket.on("ClientSend",msgessageClient);
-    socket.on('disconnect', Disconnect)
-    console.log(socket.id);
+    // socket.on("ClientSend",msgessageClient);
+    // socket.on('disconnect', Disconnect)
+    // //console.log(socket.id);
 };
 io.on("connection", message);
 

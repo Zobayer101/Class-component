@@ -10,7 +10,7 @@ import { io } from "socket.io-client";
 
  
 const ChatPage = () => {
-  const { toggle, setToggle } = useContext(Context);
+  const { toggle, setToggle, message } = useContext(Context);
   useEffect(() => {
     let url = "http://localhost:3300";
     const socket = io(url);
@@ -25,7 +25,9 @@ const ChatPage = () => {
       socket.disconnect()
     }
   }, []);
-  
+  if (!message) return (<>
+    <div><h1>Your message Box is blank</h1></div>
+  </>)
   return (
     <div>
       <div className="ChatBox">
@@ -38,10 +40,10 @@ const ChatPage = () => {
               <FaArrowLeft />
             </div>
             <div className="img">
-              <img src={avater} alt="" />
+              <img src={message.data.Udata[0].photo||avater} alt="" />
             </div>
             <div className="namePaticipator">
-              <p>Zobayer</p>
+              <p>{message.data.Udata[0].fname}</p>
             </div>
           </div>
           <div className="Hfre">
@@ -53,13 +55,13 @@ const ChatPage = () => {
 
         <div className="MainChat">
           <div className="Pphoto">
-            <img src={avater} alt="" />
+            <img src={message.data.Udata[0].photo||avater} alt="" />
           </div>
           <div className="DateStart">
-            <p>2 feb 2020</p>
+            <p>3/21/24</p>
           </div>
           <div className="ProName">
-            <h3>Habib</h3>
+            <h3>{message.data.Udata[0].fname}</h3>
           </div>
 
           {/* ************************************* Sender message********************************** */}

@@ -11,9 +11,11 @@ function App() {
   const [member, setMember] = useState(true);
   const [model, setModel] = useState(false);
   const [ID, setID] = useState(null);
-   let [alldata, setAlldata] = useState(null);
-  let [user, setUser] = useState(null);
+  const [alldata, setAlldata] = useState(null);
+  const [user, setUser] = useState(null);
   const [toggle, setToggle] = useState(false);
+  const [list, setList] = useState(null);
+  const [message, setMessage] = useState(null);
    
   return (
     <>
@@ -33,6 +35,10 @@ function App() {
           setAlldata,
           toggle,
           setToggle,
+          list,
+          setList,
+          message,
+          setMessage,
         }}
       >
         <Gobal />
