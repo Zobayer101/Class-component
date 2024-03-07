@@ -16,6 +16,9 @@ function App() {
   const [toggle, setToggle] = useState(false);
   const [list, setList] = useState(null);
   const [message, setMessage] = useState(null);
+  const [prodata, setProdata] = useState(null);
+  const [text, setText] = useState()
+  const [returnMessage,setReturnMessage]=useState(null)
    
   return (
     <>
@@ -39,6 +42,12 @@ function App() {
           setList,
           message,
           setMessage,
+          prodata,
+          setProdata,
+          text,
+          setText,
+          returnMessage,
+          setReturnMessage,
         }}
       >
         <Gobal />

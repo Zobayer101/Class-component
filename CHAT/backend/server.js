@@ -33,7 +33,7 @@ let io = new socket.Server(server, {
 // }
 
 let message = (socket) => {
-    console.log("connect a new user");
+    //console.log("connect a new user");
     socket.emit('serverSend', "hello md zobayer I send on server")
     // socket.on("ClientSend",msgessageClient);
     // socket.on('disconnect', Disconnect)

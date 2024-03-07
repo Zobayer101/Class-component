@@ -7,27 +7,67 @@ import { FaArrowLeft } from "react-icons/fa6";
 import { useContext, useEffect } from "react";
 import { Context } from "../App";
 import { io } from "socket.io-client";
+import PostData from "../lib/PostData";
 
- 
 const ChatPage = () => {
-  const { toggle, setToggle, message } = useContext(Context);
+  const {
+    toggle,
+    setToggle,
+    setMessage,
+    message,
+    prodata,
+    text,
+    setText,
+    returnMessage,
+    setReturnMessage,
+  } = useContext(Context);
   useEffect(() => {
     let url = "http://localhost:3300";
     const socket = io(url);
-    socket.on("connect", () => {
-     console.log(socket.id)
-    });
-    socket.on("serverSend", (msg) => {
-      console.log(msg);
-    });
-    socket.emit("ClientSend","I am come from client side")
+    // socket.on("connect", () => {
+    //  console.log(socket.id)
+    // });
+    // socket.on("serverSend", (msg) => {
+    //   console.log(msg);
+    // });
+    // socket.emit("ClientSend","I am come from client side")
     return () => {
-      socket.disconnect()
-    }
+      socket.disconnect();
+    };
   }, []);
-  if (!message) return (<>
-    <div><h1>Your message Box is blank</h1></div>
-  </>)
+  const sendMessage = (e) => {
+    e.preventDefault();
+    setMessage((pre) => [...pre,{ text}]);
+    PostData(
+      "http://localhost:3300/route/api/new/message/save",
+      {
+        text,
+        conID: prodata.ConID,
+        RisiveID: prodata.RisiveID,
+        SendID:prodata.SendID,
+      },
+      setReturnMessage
+    );
+    setText('')
+
+  };
+
+  console.log(text);
+  console.log("new return message ");
+  console.log(returnMessage);
+
+  if (!message)
+    return (
+      <>
+        <div>
+          <h1>Your message Box is blank</h1>
+        </div>
+      </>
+    );
+  console.log(prodata);
+  console.log(message);
+  console.log(prodata.RisiveID);
+  
   return (
     <div>
       <div className="ChatBox">
@@ -40,10 +80,10 @@ const ChatPage = () => {
               <FaArrowLeft />
             </div>
             <div className="img">
-              <img src={message.data.Udata[0].photo||avater} alt="" />
+              <img src={prodata.photo || avater} alt="" />
             </div>
             <div className="namePaticipator">
-              <p>{message.data.Udata[0].fname}</p>
+              <p>{prodata.name}</p>
             </div>
           </div>
           <div className="Hfre">
@@ -55,57 +95,67 @@ const ChatPage = () => {
 
         <div className="MainChat">
           <div className="Pphoto">
-            <img src={message.data.Udata[0].photo||avater} alt="" />
+            <img src={prodata.photo || avater} alt="" />
           </div>
           <div className="DateStart">
-            <p>3/21/24</p>
+            <p>{prodata.date || "today"}</p>
           </div>
           <div className="ProName">
-            <h3>{message.data.Udata[0].fname}</h3>
+            <h3>{prodata.name}</h3>
           </div>
 
           {/* ************************************* Sender message********************************** */}
-          <div className="coVerSender">
-            <div className="senderCont">
-              <div className="Simg">
-                <img src={avater} alt="" />
-              </div>
-              <div className="Text">
-                <p>
-                  Hi and well come agen Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Illo dolores, fugiat sit architecto nihil,
-                  et consectetur rerum molestias eaque odio dignissimos corrupti
-                  minus officiis ea error sequi est suscipit debitis.
-                </p>
+          {message.map((value, index) => {
+            
+            console.log(message[index].resiverID);
+            if (prodata.RisiveID == message[index].resiverID) {
+               //creator won data
+              return (
+                <div className="coVerSender" key={index}>
+                  <div className="senderCont">
+                    <div className="Simg">
+                      <img src={ prodata.wonerPhoto|| avater} alt="" />
+                    </div>
+                    <div className="Text">
+                      <p>{value.text}</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            } else { 
+          
+            {/* ******************************** Reciver message ************************************* */ }
+              //paricipator data
+              return (
+            <div className="CoverRicvier" key={index}>
+              <div className="reciverCon">
+                <div className="Text">
+                  <p>{value.text}</p>
+                </div>
+                <div className="Simg">
+                  <img src={prodata.photo || avater} alt="" />
+                </div>
               </div>
             </div>
-          </div>
-          {/* ******************************** Reciver message ************************************* */}
-          <div className="CoverRicvier">
-            <div className="reciverCon">
-              <div className="Text">
-                <p>
-                  Hi and well come agen Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Mollitia asperiores ipsam laboriosam,
-                  provident illo quisquam alias officiis ex veritatis, quam
-                  tempora tempore aliquam nostrum est nam excepturi maxime totam
-                  ducimus.
-                </p>
-              </div>
-              <div className="Simg">
-                <img src={avater} alt="" />
-              </div>
-            </div>
-          </div>
+          );
+          }
+          })}
+
+          {/* --------------------------------------end------------ */}
         </div>
         <div className="Sender">
           <div className="SenD">
-            <button>
+            <button type="submit" onClick={(e) => sendMessage(e)}>
               <IoIosSend />
             </button>
           </div>
           <div className="input">
-            <input type="text" autoComplete="off" />
+            <input
+              type="text"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              autoComplete="off"
+            />
           </div>
         </div>
       </div>

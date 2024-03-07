@@ -5,14 +5,22 @@ import useFecth from "../lib/useFecth";
 import PostData from "../lib/PostData";
 
 const ChatList = () => {
-  const { toggle, setToggle, list, setList, message, setMessage } =
-    useContext(Context);
+  const {
+    toggle,
+    setToggle,
+    list,
+    setList,
+    message,
+    setMessage,
+    setProdata,
+  
+  } = useContext(Context);
   let url = "http://localhost:3300/route/api/conversation/list/read";
   let urlx = "http://localhost:3300/route/api/create/message/start";
 
   useFecth(url, setList);
 
-  const SendData = async (ID) => PostData(urlx, ID, setMessage);
+  const SendData = async (ID) => PostData(urlx, ID, setMessage, setProdata);
 
   if (!list) return <h1>Loading...</h1>;
   console.log(message);
@@ -38,7 +46,7 @@ const ChatList = () => {
           {list.data.map((value, index) => {
             return (
               <div
-                onClick={() => SendData(value._id)}
+                onClick={() => {SendData(value._id),setToggle(!toggle)} }
                 className="PeopleCard"
                 key={index}
               >

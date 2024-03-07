@@ -209,36 +209,53 @@ exports.ListConversationData = async (req, res) => {
 //Conversation start now
 exports.createmessage = async (req, res) => {
   try {
-    let users = req.body.ID;
     let woner = req.userID;
+    let users = req.body.ID;
 
     //DB queries and chack have any before conversation
     let conData = await Conversation.find({
-      $or: [{ creatorID: woner }, { creatorID: users }],
-    });
-   
+      $or: [
+        { $and: [{ creatorID: woner }, { paticipatorID: users }] },
+        { $and: [{ creatorID: users }, { paticipatorID: woner }] },
+      ],
+    })
+      .populate("creatorID", "fname photo ")
+      .populate("paticipatorID", "fname photo");
+
     //have a conversation
     if (conData[0]) {
-      console.log("conData");
-
       //chack, which roll are you play
-      if (woner == conData[0].creatorID) {
+      if (woner == conData[0].creatorID._id) {
         //if are you creator
-        let Udata = await UserDB.find(
-          { _id: users },
-          { password: 0, OTP: 0, status: 0, email: 0, barth: 0, __v: 0 }
-        );
-        let Mdata = await Messages.find({ conversitionID: conData[0]._id });
-        console.log(Mdata);
-        res.status(201).json({ data: { Udata, Mdata } });
+
+        let data = {
+          ConID: conData[0]._id,
+          SendID: woner,
+          RisiveID: users,
+          name: conData[0].paticipatorID.fname,
+          photo: conData[0].paticipatorID.photo,
+          date: conData[0].date,
+          wonerPhoto: conData[0].creatorID.photo,
+        };
+
+        let message = await Messages.find({ conversitionID: conData[0]._id });
+
+        res.status(201).json({ data, message });
       } else {
-        //are you paticipator
-        let Udata = await UserDB.find(
-          { _id: woner },
-          { password: 0, OTP: 0, status: 0, barth: 0, email: 0, __v: 0 }
-        );
-        let Mdata = await Messages.find({ conversitionID: conData[0]._id });
-        res.status(201).json({ data: { Udata, Mdata } });
+        // you are a paticipator
+
+        let data = {
+          ConID: conData[0]._id,
+          SendID: woner,
+          RisiveID: users,
+          name: conData[0].creatorID.fname,
+          photo: conData[0].creatorID.photo,
+          date: conData[0].date,
+          wonerPhoto: conData[0].paticipatorID.photo,
+        };
+
+        let message = await Messages.find({ conversitionID: conData[0]._id });
+        res.status(201).json({ data, message });
       }
     } else {
       //create a new conversation with woner is creator
@@ -247,12 +264,21 @@ exports.createmessage = async (req, res) => {
         creatorID: woner,
         paticipatorID: users,
       });
-      let Mdata = await conver.save(conver);
-      let Udata=await UserDB.find({_id:users},{password:0,email:0,OTP:0,status:0,barth:0,__v:0})
+      let conData = await conver.save(conver);
+      let Udata = await UserDB.find(
+        { _id: users },
+        { password: 0, email: 0, OTP: 0, status: 0, barth: 0, __v: 0 }
+      );
+      let data = {
+        ConID: conData[0]._id,
+        SendID: woner,
+        RisiveID: users,
+        name: Udata[0].fname,
+        photo: Udata[0].photo,
+        lname: Udata[0].lname,
+      };
 
-      res.status(200).json({
-        data:{Udata,Mdata}
-      });
+      res.status(200).json({ data, message: [] });
     }
   } catch (error) {
     res.status(409).json({
