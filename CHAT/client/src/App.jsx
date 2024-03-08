@@ -18,7 +18,7 @@ function App() {
   const [message, setMessage] = useState(null);
   const [prodata, setProdata] = useState(null);
   const [text, setText] = useState()
-  const [returnMessage,setReturnMessage]=useState(null)
+  const [socketMessage,setSocketMessage]=useState(null)
    
   return (
     <>
@@ -46,8 +46,8 @@ function App() {
           setProdata,
           text,
           setText,
-          returnMessage,
-          setReturnMessage,
+          socketMessage,
+          setSocketMessage,
         }}
       >
         <Gobal />

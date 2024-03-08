@@ -1,6 +1,26 @@
 //internal import
 const Message = require('../model/messageModel');
 
+//socket.io implimantation
+
+
+
+
+exports.message = (socket) => {
+ 
+  
+  socket.on(socket.id, (data) => {
+    
+    if (data.Msg) {
+     
+      console.log(data);
+      
+      socket.to().emit("1234", 'data');
+    }
+  });
+  
+}
+
 //This is a message save controller
 exports.MessageSave = async (req, res) => {
   try {

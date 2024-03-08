@@ -10,7 +10,7 @@ const ChatList = () => {
     setToggle,
     list,
     setList,
-    message,
+   
     setMessage,
     setProdata,
   
@@ -23,7 +23,7 @@ const ChatList = () => {
   const SendData = async (ID) => PostData(urlx, ID, setMessage, setProdata);
 
   if (!list) return <h1>Loading...</h1>;
-  console.log(message);
+  
   return (
     <div>
       <div className="Paticipator">

@@ -4,10 +4,10 @@ import { FaVideo } from "react-icons/fa";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { IoIosSend } from "react-icons/io";
 import { FaArrowLeft } from "react-icons/fa6";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Context } from "../App";
-import { io } from "socket.io-client";
-import PostData from "../lib/PostData";
+import SocketMessage from "../lib/SocketMessage";
+//import PostData from "../lib/PostData";
 
 const ChatPage = () => {
   const {
@@ -18,43 +18,21 @@ const ChatPage = () => {
     prodata,
     text,
     setText,
-    returnMessage,
-    setReturnMessage,
+    socketMessage,
+    setSocketMessage,
   } = useContext(Context);
-  useEffect(() => {
-    let url = "http://localhost:3300";
-    const socket = io(url);
-    // socket.on("connect", () => {
-    //  console.log(socket.id)
-    // });
-    // socket.on("serverSend", (msg) => {
-    //   console.log(msg);
-    // });
-    // socket.emit("ClientSend","I am come from client side")
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
+
+  console.log(message);
+  
+
+
+  //send message fun
   const sendMessage = (e) => {
     e.preventDefault();
-    setMessage((pre) => [...pre,{ text}]);
-    PostData(
-      "http://localhost:3300/route/api/new/message/save",
-      {
-        text,
-        conID: prodata.ConID,
-        RisiveID: prodata.RisiveID,
-        SendID:prodata.SendID,
-      },
-      setReturnMessage
-    );
-    setText('')
-
+    setMessage((pre) => [...pre, { text, resiverID: prodata.RisiveID }]);
+    setSocketMessage(text);
+    setText("");
   };
-
-  console.log(text);
-  console.log("new return message ");
-  console.log(returnMessage);
 
   if (!message)
     return (
@@ -64,10 +42,7 @@ const ChatPage = () => {
         </div>
       </>
     );
-  console.log(prodata);
-  console.log(message);
-  console.log(prodata.RisiveID);
-  
+  SocketMessage(prodata,socketMessage,setSocketMessage)
   return (
     <div>
       <div className="ChatBox">
@@ -106,15 +81,13 @@ const ChatPage = () => {
 
           {/* ************************************* Sender message********************************** */}
           {message.map((value, index) => {
-            
-            console.log(message[index].resiverID);
             if (prodata.RisiveID == message[index].resiverID) {
-               //creator won data
+              //creator won data
               return (
                 <div className="coVerSender" key={index}>
                   <div className="senderCont">
                     <div className="Simg">
-                      <img src={ prodata.wonerPhoto|| avater} alt="" />
+                      <img src={prodata.wonerPhoto || avater} alt="" />
                     </div>
                     <div className="Text">
                       <p>{value.text}</p>
@@ -122,23 +95,24 @@ const ChatPage = () => {
                   </div>
                 </div>
               );
-            } else { 
-          
-            {/* ******************************** Reciver message ************************************* */ }
+            } else {
+              {
+                /* ******************************** Reciver message ************************************* */
+              }
               //paricipator data
               return (
-            <div className="CoverRicvier" key={index}>
-              <div className="reciverCon">
-                <div className="Text">
-                  <p>{value.text}</p>
+                <div className="CoverRicvier" key={index}>
+                  <div className="reciverCon">
+                    <div className="Text">
+                      <p>{value.text}</p>
+                    </div>
+                    <div className="Simg">
+                      <img src={prodata.photo || avater} alt="" />
+                    </div>
+                  </div>
                 </div>
-                <div className="Simg">
-                  <img src={prodata.photo || avater} alt="" />
-                </div>
-              </div>
-            </div>
-          );
-          }
+              );
+            }
           })}
 
           {/* --------------------------------------end------------ */}
