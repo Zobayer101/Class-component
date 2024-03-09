@@ -4,9 +4,10 @@ import { FaVideo } from "react-icons/fa";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { IoIosSend } from "react-icons/io";
 import { FaArrowLeft } from "react-icons/fa6";
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { Context } from "../App";
 import SocketMessage from "../lib/SocketMessage";
+
 //import PostData from "../lib/PostData";
 
 const ChatPage = () => {
@@ -21,28 +22,31 @@ const ChatPage = () => {
     socketMessage,
     setSocketMessage,
   } = useContext(Context);
+  let scroll = useRef();
+  //console.log(message);
 
-  console.log(message);
-  
-
+  SocketMessage(socketMessage, setMessage, setSocketMessage);
+  //scroll bottom;
+  useEffect(() => {
+    let scrollCon = scroll.current;
+    if (scrollCon && message.length > 0) {
+      scrollCon.scrollTop = scrollCon.scrollHeight;
+    }
+  }, [message]);
 
   //send message fun
   const sendMessage = (e) => {
     e.preventDefault();
     setMessage((pre) => [...pre, { text, resiverID: prodata.RisiveID }]);
-    setSocketMessage(text);
+    setSocketMessage({
+      Msg: text,
+      conID: prodata.ConID,
+      RisiveID: prodata.RisiveID,
+      SendID: prodata.SendID,
+    });
     setText("");
   };
 
-  if (!message)
-    return (
-      <>
-        <div>
-          <h1>Your message Box is blank</h1>
-        </div>
-      </>
-    );
-  SocketMessage(prodata,socketMessage,setSocketMessage)
   return (
     <div>
       <div className="ChatBox">
@@ -68,7 +72,7 @@ const ChatPage = () => {
           </div>
         </div>
 
-        <div className="MainChat">
+        <div className="MainChat" ref={scroll}>
           <div className="Pphoto">
             <img src={prodata.photo || avater} alt="" />
           </div>

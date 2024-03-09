@@ -143,6 +143,7 @@ exports.LoginUser = async (req, res) => {
         res.status(200).json({
           data: "ok",
           token: token,
+          ID: data._id,
         });
       } else {
         res.status(401).json({ msg: "Authentication fiald !" });

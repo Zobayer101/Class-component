@@ -17,7 +17,7 @@ function App() {
   const [list, setList] = useState(null);
   const [message, setMessage] = useState(null);
   const [prodata, setProdata] = useState(null);
-  const [text, setText] = useState()
+  const [text, setText] = useState('')
   const [socketMessage,setSocketMessage]=useState(null)
    
   return (

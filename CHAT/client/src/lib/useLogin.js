@@ -19,9 +19,11 @@ const useLogin = () => {
       body: JSON.stringify(data),
     });
     let result = await response.json();
-    console.log(result);
+
     if (result) {
       localStorage.setItem("TOKEN", JSON.stringify(result.token));
+      localStorage.setItem("ID", JSON.stringify(result.ID));
+
       setMember(true);
       Navigate("/");
     } else {

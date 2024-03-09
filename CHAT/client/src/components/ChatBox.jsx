@@ -3,20 +3,24 @@ import ChatList from "./ChatList";
 import ChatPage from "./ChatPage";
 import { useContext } from "react";
 import { Context } from "../App";
+import React from "react";
 
+// eslint-disable-next-line react-refresh/only-export-components
 const ChatBox = () => {
-  const { toggle } = useContext(Context);
+  const { toggle, message } = useContext(Context);
   return (
     <div>
       <div className="OuterCon">
-        <div className={toggle?"chatList None":"chatList"}>
+        <div className={toggle ? "chatList None" : "chatList"}>
           <ChatList />
         </div>
-        <div className={toggle?"chatPage":"chatPage None"}>
-          <ChatPage  />
+        <div className={toggle ? "chatPage" : "chatPage None"}>
+          {message? <ChatPage />: <h1>Blank page</h1>  }
+          
         </div>
       </div>
     </div>
   );
 };
-export default ChatBox;
+// eslint-disable-next-line react-refresh/only-export-components
+export default React.memo(ChatBox);

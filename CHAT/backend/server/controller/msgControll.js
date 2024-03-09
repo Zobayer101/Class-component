@@ -32,7 +32,7 @@ exports.MessageSave = async (req, res) => {
           resiverID: RisiveID,
           conversitionID: conID,
           text:text,
-      })
+      }) 
       let data = await msg.save(msg);
       console.log(data)
     res.status(200).json({ data:data });
