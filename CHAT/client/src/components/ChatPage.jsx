@@ -47,6 +47,7 @@ const ChatPage = () => {
     setText("");
   };
 
+
   return (
     <div>
       <div className="ChatBox">

@@ -72,6 +72,7 @@ const Signup = () => {
       let result = await response.json();
       if (result.data == "ok") {
         localStorage.setItem("token", JSON.stringify(result.token));
+        localStorage.setItem("ID", JSON.stringify(result.token));
         navigate("/OTP");
       }
     } catch (error) {

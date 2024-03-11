@@ -17,8 +17,10 @@ const SocketMessage = (socketMessage, setMessage, setSocketMessage) => {
         SendID,
         throw: socket.id,
       };
+      
       socket.emit(socket.id, Obj);
       socket.on("receve", (msg) => {
+        
         setMessage((pre) => [
           ...pre,
           { text: msg.Msg, RisiveID: msg.RisiveID, SendID: msg.SendID },
