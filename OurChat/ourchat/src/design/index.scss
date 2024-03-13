@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@mixin displayFlex($align, $justify, $height: "auto",$width:'auto') {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  height: $height;
+  width: $width;
+  @content;
+}
+
+@mixin Length($height:"auto",$width:"auto"){
+    height: $height;
+    width: $width;
+   
+}
+body{
+  @include displayFlex(center,center ,100vh ,100% ){
+    background: rgba(158, 93, 40, 0.133);
+  }; 
+}
+
+.countuner {
+  @include Length(500px,400px);
+      overflow:  auto;
+      background: #d1cfcf;
+
+  @each $i,$color in (1:#f0c,2:#09f,3:#fca){
+
+      .box#{$i}{
+          @include Length(100vh,100% );
+          background:$color;
+      }
+  }
+  &::-webkit-scrollbar{
+    @include Length(auto,5px );
+
+}
+&::-webkit-scrollbar-track{
+    background: rgb(100,100,100);
+}
+&::-webkit-scrollbar-thumb{
+    background: #00ff00;
+}
+}

@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background: rgba(158, 93, 40, 0.133);
+}
+
+.countuner {
+  height: 500px;
+  width: 400px;
+  overflow: auto;
+  background: #d1cfcf;
+}
+.countuner .box1 {
+  height: 100vh;
+  width: 100%;
+  background: #f0c;
+}
+.countuner .box2 {
+  height: 100vh;
+  width: 100%;
+  background: #09f;
+}
+.countuner .box3 {
+  height: 100vh;
+  width: 100%;
+  background: #fca;
+}
+.countuner::-webkit-scrollbar {
+  height: auto;
+  width: 5px;
+}
+.countuner::-webkit-scrollbar-track {
+  background: rgb(100, 100, 100);
+}
+.countuner::-webkit-scrollbar-thumb {
+  background: #00ff00;
+}/*# sourceMappingURL=index.css.map */
