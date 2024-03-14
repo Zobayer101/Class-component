@@ -1,0 +1,14 @@
+@mixin displayFlex($align, $justify, $height: "auto",$width:'auto') {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  height: $height;
+  width: $width;
+  @content;
+}
+
+@mixin Length($height:"auto",$width:"auto"){
+    height: $height;
+    width: $width;
+   
+}

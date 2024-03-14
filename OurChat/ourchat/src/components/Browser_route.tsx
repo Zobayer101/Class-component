@@ -1,9 +1,9 @@
 
-import Main_chat from './Main_chat';
+import Toggle from "./Toggle";
 const Browser_route = () => {
     return (
         <div>
-            <Main_chat/>
+         <Toggle/>
         </div>
     )
 }
