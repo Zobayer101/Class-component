@@ -1,0 +1,40 @@
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@mixin DisplayF($height,$width,$align,$justify){
+    height: $height;
+    width: $width;
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+}
+@mixin Lenght($height,$width){
+    height: $height;
+    width: $width;
+}
+
+body{
+    @include DisplayF(100vh,100%,center,center);
+    background: #fffc00;
+    
+}
+
+button{
+        @include DisplayF(50px,200px ,center ,center );
+       border: 3px solid;
+       box-shadow: 2px 2px 8px ;
+       font-size: 20px;
+       color: #fff;
+       border-radius: 10px;
+       background: #000;
+       transition: .3s;
+       &:hover{
+        transform: scale(1.2);
+        background: #4e0505;
+       }
+}
