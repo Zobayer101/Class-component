@@ -5,7 +5,8 @@ const LinkDB = require('../model/model');
 // Database link save
 exports.LinkSave = async (req, res) => {
     try {
-        const link = new LinkDB(req.body);
+        console.log(req.body);
+        const link = new LinkDB(req.body); 
         data = await link.save(link);
         res.status(200).json({ data });
     } catch (error) {
@@ -17,7 +18,7 @@ exports.LinkSave = async (req, res) => {
 exports.ReadLink = async (req, res) => {
     try {
         data = await LinkDB.find();
-        res.status.json({ data });
+        res.status(200).json({ data });
     } catch (error) {
         res.status(409).json(error.message);
     }

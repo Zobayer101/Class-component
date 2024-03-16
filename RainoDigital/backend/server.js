@@ -17,7 +17,7 @@ app.use(express.json({ limit: '20mb' }));
 
 const PORT = process.env.PORT || 8800;
 
-app.use('/routes', routes);
+app.use('/route', routes);
  
 Connect();
 
